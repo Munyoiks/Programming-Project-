@@ -41,10 +41,10 @@ void addStudent() {
     std::cin >> student.group;
 
 
-int choice;
-        int choice;
+    int choice;
+    
     do {
-        std::cout << "Choose activity type: 1. Sport 2. Club/Society 3. Done: ";
+        std::cout << "Choose activity type: 1. Sport 2. Club 3. Done: ";
         std::cin >> choice;
 
         if (choice == 1) {
@@ -63,7 +63,7 @@ int choice;
                 }
             }
         } else if (choice == 2) {
-            std::cout << "Choose club/society: ";
+            std::cout << "Choose club: ";
             for (size_t i = 0; i < clubs.size(); ++i) {
                 std::cout << i++ << ". " << clubs[i].name << " (" << clubs[i].members.size() << "/" << clubs[i].max_capacity << ")\n";
             }
@@ -74,7 +74,7 @@ int choice;
                     student.activities.push_back(clubs[club_choice-1].name);
                     clubs[club_choice-1].members.push_back(student);
                 } else {
-                    std::cout << "Club/Society is at full capacity.\n";
+                    std::cout << "Club is at full capacity.\n";
                 }
             }
         }
@@ -87,12 +87,12 @@ void viewStudents() {
     for (const auto& student : students) {
        std::cout<<"Name:"<<student.firstname<<""<<
    student.surname<<",Gender."<<student.gender<<",Age:"
-   <<student.age<<,Group:"<<student.group<<"/n";
+   <<student.age<<,Group:"<<student.group<<"\n";
       std::cout<<"Activities:";
       for(const auto & activity:student.activities) {
         std::cout<<activity<<"";
       }
-      std::cout<<"/n";
+      std::cout<<"\n";
     }
    }
 
@@ -100,13 +100,13 @@ void viewStudents() {
      for(const auto& activity:activities) {
        std::cout<<" Activity:"<<Activity.name<<",Capacity:"
      <<activity.members.size()<<"/"<<activty.max_capacity<<
-     "/n"
+     "\n"
        }  
      }
 
      void saveToFile(){
       std::ofstream file("students.csv");
-      file<<"Firstname,Surname,Gender,Age,Group,Activities/n"
+      file<<"Firstname,Surname,Gender,Age,Group,Activities\n"
       for(const auto& student:students){
         file<<student.firstname<<","<<student.surname<<","
      <<student.gender<<","<<student.age<<","<<student.group
@@ -116,17 +116,20 @@ void viewStudents() {
         }
         file<<"/n";
       }
+    file.close();
+    std::cout << "Data saved to students.csv\n";
+}
 
       int main(){
         int choice;
         do{
-         std::cout<<"Menu:/n";
-         std::cout<<"1.Add Student/n";
-         std::cout<<"2.View Students/n";
-         std::cout<<"3.View Clubs/Societies/n";
-         std::cout<<"4.View Sports/n";
-         std::cout<<"5.Save all Files/n";
-         std::cout<<"6.Exit/n";
+         std::cout<<"Menu:\n";
+         std::cout<<"1.Add Student\n";
+         std::cout<<"2.View Students\n";
+         std::cout<<"3.View Clubs\n";
+         std::cout<<"4.View Sports\n";
+         std::cout<<"5.Save all Files\n";
+         std::cout<<"6.Exit\n";
          std::cin>>choice;
 
          switch(choice){
