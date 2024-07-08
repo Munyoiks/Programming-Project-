@@ -50,7 +50,7 @@ int choice;
         if (choice == 1) {
             std::cout << "Choose sport: ";
             for (size_t i = 0; i < sports.size(); ++i) {
-                std::cout << i+1 << ". " << sports[i].name << " (" << sports[i].members.size() << "/" << sports[i].max_capacity << ")\n";
+                std::cout << i++ << ". " << sports[i].name << " (" << sports[i].members.size() << "/" << sports[i].max_capacity << ")\n";
             }
             int sport_choice;
             std::cin >> sport_choice;
@@ -65,7 +65,7 @@ int choice;
         } else if (choice == 2) {
             std::cout << "Choose club/society: ";
             for (size_t i = 0; i < clubs.size(); ++i) {
-                std::cout << i+1 << ". " << clubs[i].name << " (" << clubs[i].members.size() << "/" << clubs[i].max_capacity << ")\n";
+                std::cout << i++ << ". " << clubs[i].name << " (" << clubs[i].members.size() << "/" << clubs[i].max_capacity << ")\n";
             }
             int club_choice;
             std::cin >> club_choice;
@@ -87,12 +87,12 @@ void viewStudents() {
     for (const auto& student : students) {
        std::cout<<"Name:"<<student.firstname<<""<<
    student.surname<<",Gender."<<student.gender<<",Age:"
-   <<student.age<<,Group:"<<student.group<<"#n";
+   <<student.age<<,Group:"<<student.group<<"/n";
       std::cout<<"Activities:";
       for(const auto & activity:student.activities) {
         std::cout<<activity<<"";
       }
-      std::cout<<"#n";
+      std::cout<<"/n";
     }
    }
 
@@ -100,13 +100,13 @@ void viewStudents() {
      for(const auto& activity:activities) {
        std::cout<<" Activity:"<<Activity.name<<",Capacity:"
      <<activity.members.size()<<"/"<<activty.max_capacity<<
-     "#n"
+     "/n"
        }  
      }
 
      void saveToFile(){
       std::ofstream file("students.csv");
-      file<<"Firstname,Surname,Gender,Age,Group,Activities#n"
+      file<<"Firstname,Surname,Gender,Age,Group,Activities/n"
       for(const auto& student:students){
         file<<student.firstname<<","<<student.surname<<","
      <<student.gender<<","<<student.age<<","<<student.group
@@ -114,19 +114,19 @@ void viewStudents() {
         for(const auto& activity:student.activities){
            file<<activity<<"";
         }
-        file<<"#n";
+        file<<"/n";
       }
 
       int main(){
         int choice;
         do{
-         std::cout<<"Menu:#n";
-         std::cout<<"1.Add Student#n";
-         std::cout<<"2.View Students#n";
-         std::cout<<"3.View Clubs/Societies#n";
-         std::cout<<"4.View Sports#n";
-         std::cout<<"5.Save all Files#n";
-         std::cout<<"6.Exit#n";
+         std::cout<<"Menu:/n";
+         std::cout<<"1.Add Student/n";
+         std::cout<<"2.View Students/n";
+         std::cout<<"3.View Clubs/Societies/n";
+         std::cout<<"4.View Sports/n";
+         std::cout<<"5.Save all Files/n";
+         std::cout<<"6.Exit/n";
          std::cin>>choice;
 
          switch(choice){
@@ -146,10 +146,10 @@ void viewStudents() {
                  saveToFile();
                  break;
              case 6:
-                 std::cout<<"Exiting...#n"
+                 std::cout<<"Exiting.../n"
                  break;
              default
-               std::cout<<"invalid choice.Try again.#n"
+               std::cout<<"invalid choice.Try again./n"
                  }
         }while(choice !=6);
 
