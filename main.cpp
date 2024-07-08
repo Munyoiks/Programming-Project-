@@ -3,7 +3,7 @@
 #include <string>
 #include <fstream>
 #include <map>
-#include <algorithm>
+#include <algorithim>
 
 using namespace std;
 
@@ -42,6 +42,6 @@ void addStudent() {
 
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    
     return 0;
 }
