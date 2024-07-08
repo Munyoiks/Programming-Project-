@@ -85,6 +85,75 @@ int choice;
 
 void viewStudents() {
     for (const auto& student : students) {
+       std::cout<<"Name:"<<student.firstname<<""<<
+   student.surname<<",Gender."<<student.gender<<",Age:"
+   <<student.age<<,Group:"<<student.group<<"#n";
+      std::cout<<"Activities:";
+      for(const auto & activity:student.activities) {
+        std::cout<<activity<<"";
+      }
+      std::cout<<"#n";
+    }
+   }
+
+   void viewActivities(const std::vector<Activity>& activities) {
+     for(const auto& activity:activities) {
+       std::cout<<" Activity:"<<Activity.name<<",Capacity:"
+     <<activity.members.size()<<"/"<<activty.max_capacity<<
+     "#n"
+       }  
+     }
+
+     void saveToFile(){
+      std::ofstream file("students.csv");
+      file<<"Firstname,Surname,Gender,Age,Group,Activities#n"
+      for(const auto& student:students){
+        file<<student.firstname<<","<<student.surname<<","
+     <<student.gender<<","<<student.age<<","<<student.group
+     <<",";
+        for(const auto& activity:student.activities){
+           file<<activity<<"";
+        }
+        file<<"#n";
+      }
+
+      int main(){
+        int choice;
+        do{
+         std::cout<<"Menu:#n";
+         std::cout<<"1.Add Student#n";
+         std::cout<<"2.View Students#n";
+         std::cout<<"3.View Clubs/Societies#n";
+         std::cout<<"4.View Sports#n";
+         std::cout<<"5.Save all Files#n";
+         std::cout<<"6.Exit#n";
+         std::cin>>choice;
+
+         switch(choice){
+             case 1:
+                 addStudent();
+                 break;
+             case 2:
+                 viewStudents();
+                 break;
+             case 3:
+                 viewActivities(clubs);
+                 break;
+             case 4:
+                 viewActivities(sports);
+                 break;
+             case 5:
+                 saveToFile();
+                 break;
+             case 6:
+                 std::cout<<"Exiting...#n"
+                 break;
+             default
+               std::cout<<"invalid choice.Try again.#n"
+                 }
+        }while(choice !=6);
+
+        
 
     
     return 0;
