@@ -59,6 +59,7 @@ void addStudent() {
             }
         } else if (choice == 2) {
             std::cout << "Select club/society: ";
+            //a for loop that iterates over the clubs vector. This loop allows you to access each club in the vector by its index. 
             for (size_t i = 0; i < clubs.size(); ++i) {
                 std::cout << i+1 << ". " << clubs[i].name << " (" << clubs[i].members.size() << "/" << clubs[i].max_capacity << ")\n";
             }
@@ -79,6 +80,7 @@ void addStudent() {
 }
 //void means that the function does not have a return value
 void viewStudents() {
+    //
     for (const auto& student : students) {
         std::cout << "Name: " << student.firstname << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
         std::cout << "Activities: ";
