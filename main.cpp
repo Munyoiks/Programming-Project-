@@ -108,6 +108,7 @@ void saveToFile() {
         file << "\n";
     }
     file.close();
+    //Closing a file is important because it ensures that all data is properly saved to the disk and that resources are freed.
     std::cout << "Data is saved to students.csv\n";
 }
 
