@@ -58,3 +58,59 @@ void addStudent() {
                     std::cout << "Sport is at maximum capacity.\n";
                 }
             }
+        } else if (choice == 2) {
+            std::cout << "Select club/society: ";
+            //a for loop that iterates over the clubs vector. This loop allows you to access each club in the vector by its index.
+            for (size_t i = 0; i < clubs.size(); ++i) {
+                std::cout << i+1 << ". " << clubs[i].name << " (" << clubs[i].members.size() << "/" << clubs[i].max_capacity << ")\n";
+            }
+            int club_choice;
+            std::cin >> club_choice;
+            if (club_choice >= 1 && club_choice <= clubs.size()) {
+                if (clubs[club_choice-1].members.size() < clubs[club_choice-1].max_capacity) {
+                    student.activities.push_back(clubs[club_choice-1].name);
+                    clubs[club_choice-1].members.push_back(student);
+                } else {
+                    std::cout << "Club/Society is at max capacity.\n";
+                }
+            }
+        }
+    } while (choice != 3);
+
+    students.push_back(student);
+}
+//void means that the function does not have a return value
+void viewStudents() {
+    //
+    for (const auto& student : students) {
+        std::cout << "Name: " << student.firstname << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
+        std::cout << "Activities: ";
+        for (const auto& activity : student.activities) {
+            std::cout << activity << " ";
+        }
+        std::cout << "\n";
+    }
+}
+
+void viewActivities(const std::vector<Activity>& activities) {
+    for (const auto& activity : activities) {
+        std::cout << "Activity: " << activity.name << ", Capacity: " << activity.members.size() << "/" << activity.max_capacity << "\n";
+    }
+}
+
+void saveToFile() {
+    std::ofstream file("students.csv");
+    file << "Firstname,Surname,Gender,Age,Group,Activities\n";
+    for (const auto& student : students) {
+        file << student.firstname << "," << student.surname << "," << student.gender << "," << student.age << "," << student.group << ",";
+        for (const auto& activity : student.activities) {
+            file << activity << " ";
+        }
+        file << "\n";
+    }
+    file.close();
+    //Closing a file is important because it ensures that all data is properly saved to the disk and that resources are freed.
+    std::cout << "Data is saved to students.csv\n";
+}
+
+
