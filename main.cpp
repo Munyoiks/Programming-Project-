@@ -39,10 +39,12 @@ void addStudent() {
     do {
         std::cout << "Select activity type: 1. Sport 2. Club/Society 3. Done: ";
         std::cin >> choice;
-
+        
+//part of a for loop that iterates over the sports vector. This loop allows you to access each sport in the vector by its index.  
         if (choice == 1) {
             std::cout << "Select a sport: ";
             for (size_t i = 0; i < sports.size(); ++i) {
+                //i + 1 is used to display sport numbers starting from 1 
                 std::cout << i+1 << ". " << sports[i].name << " (" << sports[i].members.size() << "/" << sports[i].max_capacity << ")\n";
             }
             int sport_choice;
@@ -75,7 +77,7 @@ void addStudent() {
 
     students.push_back(student);
 }
-
+//void means that the function does not have a return value
 void viewStudents() {
     for (const auto& student : students) {
         std::cout << "Name: " << student.firstname << " " << student.surname << ", Gender: " << student.gender << ", Age: " << student.age << ", Group: " << student.group << "\n";
